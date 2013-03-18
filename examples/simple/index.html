@@ -3,40 +3,48 @@
   <head>
   </head>
   <body>
-    <div data-scope="user" data-fn="views.UserView">
-      <h2 data-text="name | capitalize"></h2>
-    </div>
-    <script src="../../build/build.js"></script>
-    <script>
-      var Views = require('views')
-      var reactive = require('component-reactive')
+  <div data-scope="user" data-fn="views.UserView">
+    <!--
+    This could be any kind of template content. In this case,
+    we're using component/reactive.
+    -->
+    <h2 data-text="name | capitalize"></h2>
+  </div>
 
-      function UserView(el, model) {
-        if (!(this instanceof UserView)) return new UserView(el, model)
-        this.el = el
-        this.model = model
-        reactive(this.el, this.model, this)
+  <script src="../../build/build.js"></script>
+
+  <script>
+    var DOMstantiate = require('domstantiate')
+    var reactive = require('component-reactive')
+    // Create a standard "View" class.
+    function UserView(el, model) {
+      if (!(this instanceof UserView)) return new UserView(el, model)
+      this.el = el
+      this.model = model
+      reactive(this.el, this.model, this)
+    }
+
+    UserView.prototype.capitalize = function capitalize(str) {
+      return str.toUpperCase()
+    }
+
+    // Create a namespace for lookups from
+    // the DOM
+    var app = {
+      users: [
+        {name: 'Tim'},
+        {name: 'Bob'}
+      ],
+      user: function() {
+        return this.users[0]
+      },
+      views: {
+        UserView: UserView
       }
-
-      UserView.prototype.capitalize = function capitalize(str) {
-        return str.toUpperCase()
-      }
-
-
-      var app = {
-        users: [
-          {name: 'Tim'},
-          {name: 'Bob'}
-        ],
-        user: function() {
-          return this.users[0]
-        },
-        views: {
-          UserView: UserView
-        }
-      }
-      var view = Views(app)
-    </script>
-  </body>
+    }
+    // use this namespace when looking up scopes and functions
+    DOMstantiate(app)
+  </script>
+</body>
 </html>
 
