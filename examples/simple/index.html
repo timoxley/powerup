@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <div data-scope="user" data-fn="views.UserView">
+      <h2 data-text="name | capitalize"></h2>
+    </div>
+    <script src="../../build/build.js"></script>
+    <script>
+      var Views = require('views')
+      var reactive = require('component-reactive')
+
+      function UserView(el, model) {
+        if (!(this instanceof UserView)) return new UserView(el, model)
+        this.el = el
+        this.model = model
+        reactive(this.el, this.model, this)
+      }
+
+      UserView.prototype.capitalize = function capitalize(str) {
+        return str.toUpperCase()
+      }
+
+
+      var app = {
+        users: [
+          {name: 'Tim'},
+          {name: 'Bob'}
+        ],
+        user: function() {
+          return this.users[0]
+        },
+        views: {
+          UserView: UserView
+        }
+      }
+      var view = Views(app)
+    </script>
+  </body>
+</html>
+

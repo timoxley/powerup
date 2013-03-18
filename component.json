@@ -1,0 +1,17 @@
+{
+  "name": "views",
+  "repo": "timoxley/views",
+  "description": "Instantiate views and bind models via the DOM",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/to-function": "*",
+    "timoxley/dom-data-map": "*",
+    "component/reactive": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ]
+}
