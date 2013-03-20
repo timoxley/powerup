@@ -3,10 +3,10 @@
 var _ = require('to-function')
 var DDM = require('dom-data-map')
 
-module.exports = function View(context) {
-  if (!(this instanceof View)) return new View(context)
+module.exports = function Domstantiate(context) {
+  if (!(this instanceof Domstantiate)) return new Domstantiate(context)
 
-  var ddm = DDM(context)
+  var ddm = this.ddm = DDM(context)
   ddm('[data-scope]', function(el, data) {
     var path = el.attributes['data-scope'].value
     var scopeData = _(path)(this)
