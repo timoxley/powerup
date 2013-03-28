@@ -6,7 +6,8 @@
   "keywords": [],
   "dependencies": {
     "component/to-function": "*",
-    "timoxley/dom-data-map": "*"
+    "timoxley/dom-data-map": "*",
+    "timoxley/set": "*"
   },
   "development": {
     "component/reactive": "*"

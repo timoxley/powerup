@@ -3,7 +3,7 @@
   <head>
   </head>
   <body>
-  <div data-scope="user" data-fn="views.UserView">
+  <div data-get="user" data-exec="views.UserView">
     <!--
     This could be any kind of template content. In this case,
     we're using component/reactive.
@@ -11,7 +11,7 @@
     <h2 data-text="name | capitalize"></h2>
   </div>
 
-  <script src="../../build/build.js"></script>
+  <script src="../build/build.js"></script>
 
   <script>
     var DOMstantiate = require('domstantiate')
@@ -47,4 +47,5 @@
   </script>
 </body>
 </html>
+
 

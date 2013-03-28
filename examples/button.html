@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+  <button data-get="enabled" data-set="enabled" data-exec="button"></button>
+
+  <script src="../build/build.js"></script>
+
+  <script>
+    var DOMstantiate = require('domstantiate')
+    var reactive = require('component-reactive')
+
+    function Widget() {
+      this.enabled = false
+    }
+
+    // Button Behaviour
+    function Button(el, getter, setter) {
+      var self = this
+      !this.initialised && el.addEventListener('click', function(e) {
+        e.preventDefault()
+        setter(!getter())
+        el.innerText = getter() ? 'On' : 'Off'
+      })
+      el.innerText = getter() ? 'On' : 'Off'
+      console.log(arguments)
+      this.initialised = true
+    }
+
+    var widget = new Widget()
+    Widget.prototype.button = Button
+
+    // use this namespace when looking up scopes and functions
+    var trigger = DOMstantiate(widget)
+  </script>
+</body>
+</html>
