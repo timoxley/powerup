@@ -7,13 +7,21 @@
   "dependencies": {
     "component/to-function": "*",
     "timoxley/dom-data-map": "*",
-    "timoxley/set": "*"
+    "timoxley/set": "*",
+    "timoxley/simple-watch": "*",
+    "timoxley/next-tick": "*"
   },
   "development": {
-    "component/reactive": "*"
+    "component/reactive": "*",
+    "timoxley/assert": "*"
   },
   "license": "MIT",
   "scripts": [
-    "index.js"
+    "index.js",
+    "plugins/exec.js",
+    "plugins/get.js",
+    "plugins/set.js",
+    "plugins/watch.js",
+    "plugins/init.js"
   ]
 }

@@ -3,33 +3,32 @@
 var _ = require('to-function')
 var DDM = require('dom-data-map')
 var set = require('set')
+var watch = require('simple-watch')
+var exec = require('./plugins/exec')
+var nextTick = require('next-tick')
 
-module.exports = function Domstantiate(context, el) {
+module.exports = Domstantiate
+function Domstantiate(context, el) {
   if (!(this instanceof Domstantiate)) return new Domstantiate(context, el)
-  var ddm = DDM(context, el)
+  this.ddm = DDM(context, el)
+  this.default = {}
+  this.default.selector = "*"
+}
 
-  function Refresh() {
-    ddm('[data-get]', function(el, data) {
-      var path = el.attributes['data-get'].value
-      data.get = _(path)(context)
-      if (typeof data.get === 'function')
-      data.get = data.get.call(context)
-      return data
-    })
+Domstantiate.prototype.use = queueNextTick(function use(selector, fn) {
+  if (typeof selector === 'function') return selector.call(this)
+  selector = selector || this.default.selector
+  this.ddm(selector, function(el, data) {
+    return fn.call(this, el, data)
+  })
+})
 
-    ddm('[data-set]', function(el, data) {
-      var path = el.attributes['data-set'].value
-      data.set = set(this, path)
-      return data
+function queueNextTick(fn) {
+  return function() {
+    var self = this
+    var args = arguments
+    nextTick(function() {
+      fn.apply(self, args)
     })
-
-    ddm('[data-exec]', function(el, data) {
-      var path = el.attributes['data-exec'].value
-      data.exec = _(path)(context)
-      data.exec(el, data.get, data.set)
-      return data
-    })
-    return Refresh
   }
-  return Refresh()
 }
