@@ -33,3 +33,11 @@ function queueNextTick(fn) {
     })
   }
 }
+
+
+Powerup.prototype.exec = require('./plugins/exec')
+Powerup.prototype.set = require('./plugins/set')
+Powerup.prototype.get = require('./plugins/get')
+Powerup.prototype.scope = require('./plugins/scope')
+Powerup.prototype.watch = require('./plugins/watch')
+Powerup.prototype.init = require('./plugins/init')
