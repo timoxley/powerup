@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+  <div data-watch="time" data-exec="refresh" data-scope="self" data-init="Clock">
+  </div>
+
+  <script src="../build/build.js"></script>
+
+  <script>
+    var Powerup = require('powerup')
+
+    // Create a namespace for lookups from
+    // the DOM
+    function Clock() {
+      if (!(this instanceof Clock)) return new Clock()
+      this.time = new Date()
+    }
+
+    Clock.prototype.start = function start() {
+      start.interval = setInterval(function() {
+        clock.time = new Date()
+      }, 500)
+    }
+
+    Clock.prototype.stop = function() {
+      clearInterval(start.interval)
+    }
+
+    // use this namespace when looking up scopes and functions
+    var clock = new Clock()
+    Powerup(clock)
+  </script>
+</body>
+</html>
+
+
+

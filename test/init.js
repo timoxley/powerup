@@ -1,8 +1,8 @@
 "use strict"
 
-var D = require('domstantiate')
-var get = require('domstantiate/plugins/get')
-var init = require('domstantiate/plugins/init')
+var Powerup = require('powerup')
+var get = require('powerup/plugins/get')
+var init = require('powerup/plugins/init')
 var assert = require('timoxley-assert')
 
 describe('init plugin', function() {
@@ -14,13 +14,12 @@ describe('init plugin', function() {
 
   it('runs once on element initialisation', function(done) {
     var app = {}
-    var d = D(app,  el)
+    var p = Powerup(app,  el)
 
-    d.use(get)
-    d.use(init)
+    p.use(get)
+    p.use(init)
 
     app.done = function thisFn(el, data) {
-      console.log(arguments)
       assert(data.get === app.user)
       done()
     }

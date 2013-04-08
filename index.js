@@ -7,15 +7,16 @@ var watch = require('simple-watch')
 var exec = require('./plugins/exec')
 var nextTick = require('next-tick')
 
-module.exports = Domstantiate
-function Domstantiate(context, el) {
-  if (!(this instanceof Domstantiate)) return new Domstantiate(context, el)
+module.exports = Powerup
+
+function Powerup(context, el) {
+  if (!(this instanceof Powerup)) return new Powerup(context, el)
   this.ddm = DDM(context, el)
   this.default = {}
   this.default.selector = "*"
 }
 
-Domstantiate.prototype.use = queueNextTick(function use(selector, fn) {
+Powerup.prototype.use = queueNextTick(function use(selector, fn) {
   if (typeof selector === 'function') return selector.call(this)
   selector = selector || this.default.selector
   this.ddm(selector, function(el, data) {
@@ -24,6 +25,7 @@ Domstantiate.prototype.use = queueNextTick(function use(selector, fn) {
 })
 
 function queueNextTick(fn) {
+  console.count('queue')
   return function() {
     var self = this
     var args = arguments

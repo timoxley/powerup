@@ -1,7 +1,7 @@
 "use strict"
 
-var D = require('domstantiate')
-var exec = require('domstantiate/plugins/exec')
+var Powerup = require('powerup')
+var exec = require('powerup/plugins/exec')
 var assert = require('timoxley-assert')
 
 describe('exec plugin', function() {
@@ -12,17 +12,17 @@ describe('exec plugin', function() {
   })
 
   it('executes functions', function(done) {
-    var d = D({done: function() {
+    var p = Powerup({done: function() {
       setTimeout(function() {
         done()
       }, 0)
     }}, el)
 
-    d.use(exec)
+    p.use(exec)
   })
 
   it('calls with el, data', function(done) {
-    var d = D({done: function thisFn(el, data) {
+    var p = Powerup({done: function thisFn(el, data) {
       setTimeout(function() {
         assert(el)
         assert(el instanceof Element)
@@ -33,6 +33,6 @@ describe('exec plugin', function() {
       }, 0)
     }}, el)
 
-    d.use(exec)
+    p.use(exec)
   })
 })

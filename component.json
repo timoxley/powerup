@@ -1,15 +1,16 @@
 {
-  "name": "domstantiate",
-  "repo": "timoxley/domstantiate",
+  "name": "powerup",
+  "repo": "timoxley/powerup",
   "description": "Invoke functions and pass data via the DOM",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [],
   "dependencies": {
     "component/to-function": "*",
     "timoxley/dom-data-map": "*",
     "timoxley/set": "*",
     "timoxley/simple-watch": "*",
-    "timoxley/next-tick": "*"
+    "timoxley/next-tick": "*",
+    "timoxley/proto-merge": "*"
   },
   "development": {
     "component/reactive": "*",
@@ -22,6 +23,7 @@
     "plugins/get.js",
     "plugins/set.js",
     "plugins/watch.js",
-    "plugins/init.js"
+    "plugins/init.js",
+    "plugins/scope.js"
   ]
 }

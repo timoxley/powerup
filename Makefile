@@ -1,5 +1,5 @@
 
-build: components index.js
+build: components index.js plugins/*
 	@component build --dev
 
 components: component.json

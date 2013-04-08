@@ -1,8 +1,8 @@
 "use strict"
 
-var D = require('domstantiate')
-var watch = require('domstantiate/plugins/watch')
-var exec = require('domstantiate/plugins/exec')
+var Powerup = require('powerup')
+var watch = require('powerup/plugins/watch')
+var exec = require('powerup/plugins/exec')
 var assert = require('timoxley-assert')
 
 describe('watch plugin', function() {
@@ -14,10 +14,10 @@ describe('watch plugin', function() {
 
   it("triggers exec when property changes", function(done) {
     var app = {}
-    var d = D(app,  el)
+    var p = Powerup(app,  el)
 
-    d.use(watch)
-    d.use(exec)
+    p.use(watch)
+    p.use(exec)
 
     app.user = 'Tim'
     var called = 0

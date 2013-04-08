@@ -8,7 +8,7 @@
   <script src="../build/build.js"></script>
 
   <script>
-    var DOMstantiate = require('domstantiate')
+    var Powerup = require('powerup')
     var reactive = require('component-reactive')
 
     function Widget() {
@@ -32,7 +32,7 @@
     Widget.prototype.button = Button
 
     // use this namespace when looking up scopes and functions
-    var trigger = DOMstantiate(widget)
+    var trigger = Powerup(widget)
   </script>
 </body>
 </html>
