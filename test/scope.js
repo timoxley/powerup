@@ -8,7 +8,6 @@ var assert = require('timoxley-assert')
 describe('scope plugin', function(){
   var el
   beforeEach(function() {
-    console.count('before')
     el = document.createElement('div')
     el.innerHTML = '<div data-scope="project"><div data-exec="done"></div></div>'
   })

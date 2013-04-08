@@ -25,7 +25,6 @@ Powerup.prototype.use = queueNextTick(function use(selector, fn) {
 })
 
 function queueNextTick(fn) {
-  console.count('queue')
   return function() {
     var self = this
     var args = arguments
