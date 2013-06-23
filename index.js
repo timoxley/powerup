@@ -2,7 +2,7 @@
 
 var _ = require('to-function')
 var DDM = require('dom-data-map')
-var set = require('set')
+var set = require('setter')
 var watch = require('simple-watch')
 var exec = require('./plugins/exec')
 var nextTick = require('next-tick')
@@ -22,6 +22,7 @@ Powerup.prototype.use = queueNextTick(function use(selector, fn) {
   this.ddm(selector, function(el, data) {
     return fn.call(this, el, data)
   })
+  return this
 })
 
 function queueNextTick(fn) {

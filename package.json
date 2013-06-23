@@ -1,0 +1,28 @@
+{
+  "name": "powerup",
+  "version": "0.0.5",
+  "description": "Allows you to specify a function and data to invoke for a DOM   Element.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/timoxley/powerup.git"
+  },
+  "author": "Tim Oxley",
+  "license": "MIT",
+  "readmeFilename": "Readme.md",
+  "gitHead": "cfe24068e043eed0c76071ccd8f0d1822cb89f6c",
+  "bugs": {
+    "url": "https://github.com/timoxley/powerup/issues"
+  },
+  "dependencies": {
+    "to-function": "~1.2.0",
+    "decomponentify": "0.0.1"
+  }
+}

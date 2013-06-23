@@ -7,7 +7,7 @@
   "dependencies": {
     "component/to-function": "*",
     "timoxley/dom-data-map": "*",
-    "timoxley/set": "*",
+    "timoxley/setter": "*",
     "timoxley/simple-watch": "*",
     "timoxley/next-tick": "*",
     "timoxley/proto-merge": "*"

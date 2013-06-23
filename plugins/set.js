@@ -1,7 +1,7 @@
 "use strict"
 
 var _ = require('to-function')
-var set = require('set')
+var set = require('setter')
 
 module.exports = function(options) {
   options = options || {}
